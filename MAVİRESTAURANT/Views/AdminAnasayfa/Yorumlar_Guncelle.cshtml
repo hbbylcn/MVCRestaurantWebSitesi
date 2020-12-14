@@ -1,0 +1,58 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Yorum
+
+@{
+    ViewBag.Title = "Yorumlar_Guncelle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Yorum Güncelle</h4> <br />
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <table class="table table-bordered" width="100" cellspacing="0">
+                            @*<div class="form-horizontal">
+                                <h4>Hakkimizda</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Hakkimizda_Id)*@
+                            <tr>
+                                <td>Yorum:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Yorum1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Yorum1, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Adı-Soyadı:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AdSoyad, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn-success" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

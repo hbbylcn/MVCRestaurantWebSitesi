@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MAVİRESTAURANT.Models.Entity.OdemeKosullari>
+@{
+    ViewBag.Title = "OdemeKosullari";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+
+            <h4><i class="fas fa-table"></i>Ödeme Koşulları</h4> <br />
+           
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Ödeme Bilgisi ID</th>
+                            <th>Resim</th>
+                            <th>Ana Başlık</th>
+                            <th>Alt Başlık 1</th>
+                            <th>Paragraf1</th>
+                            <th>Paragraf2</th>
+                            <th>Paragraf3</th>
+                            <th>Alt Başlık 2</th>
+                            <th>Paragraf4</th>
+                            <th>Paragraf5</th>
+                            <th>Durum</th>
+                            <th>Güncelle</th>
+                           
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var odeme in Model)
+                        {
+
+                            <tr>
+                                <td>@odeme.OdemeKosul_Id</td>
+                                <td><img src="~/Content/Mavi/img/hakkimizda/@odeme.Resim.ResimAd" width="150" /></td>
+                                <td>@odeme.KosulBaslik1</td>
+                                <td>@odeme.KosulBaslik2</td>
+                                <td>@odeme.KosulParagraf1</td>
+                                <td>@odeme.KosulParagraf2</td>
+                                <td>@odeme.KosulParagraf3</td>
+                                <td>@odeme.KosulBaslik3</td>
+                                <td>@odeme.KosulParagraf4</td>
+                                <td>@odeme.KosulParagraf5</td>
+                                <td>
+                                    <img src="~/Content/Admin/img/@(odeme.KosulDurum == true ? "1.png" : "0.png")" />
+                                    <label class="switch">
+                                        <input type="checkbox" id='@odeme.OdemeKosul_Id' class="aktifPasif" @(odeme.KosulDurum == true ? "checked" : "") />
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td>@Html.ActionLink("Güncelle", "OdemeKosullari_Guncelle", new { odeme.OdemeKosul_Id }, new { @class = "btn btn-info mx-4" })</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/Admin/css/switch.css" rel="stylesheet" />
+<script src="~/Content/Admin/js/sweetalert.min.js"></script>
+

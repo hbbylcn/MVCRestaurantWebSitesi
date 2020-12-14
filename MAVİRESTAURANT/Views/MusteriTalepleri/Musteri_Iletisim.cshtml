@@ -1,0 +1,80 @@
+﻿
+@model IEnumerable<MAVİRESTAURANT.Models.Entity.Iletisim>
+@{
+    ViewBag.Title = "Müşteri İletişim";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+
+            <h4><i class="fas fa-table"></i>Mesaj Listesi</h4> <br />
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mesaj Id</th>
+                            <th>Müşteri Adı-Soyadı</th>
+                            <th>Mail Adresi</th>
+                            <th>Mailin Konusu</th>
+                            <th>Mesaj</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var mesaj in Model)
+                        {
+                            <tr>
+                                <td>@mesaj.Id</td>
+                                <td>@mesaj.AdSoyad</td>
+                                <td>@mesaj.Mail</td>
+                                <td>@mesaj.Konu</td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_@mesaj.Id">
+                                        İçeriği Oku
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter_@mesaj.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">İçerik</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @Html.Raw(mesaj.Mesaj)
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/Admin/css/switch.css" rel="stylesheet" />
+
+<script src="~/Content/Admin/js/sweetalert.min.js"></script>

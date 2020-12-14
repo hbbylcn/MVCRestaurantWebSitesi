@@ -1,0 +1,151 @@
+﻿@model Tuple<List<MAVİRESTAURANT.Models.Entity.IletisimBilgileri>, List<MAVİRESTAURANT.Models.Entity.CalismaPlani>>
+
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "contact-form", action = "" }))
+{
+    if (ViewBag.Success == true)
+    {
+        <span>Mesajınız başarıyla gönderilmiştir.</span>
+
+    }
+    <!-- Start Contact section -->
+    <section id="mu-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-contact-area">
+                        <br />
+                        <div class="mu-title">
+                            <br />
+
+                            <span class="mu-subtitle">İletişim</span>
+
+                        </div>
+
+                        <div class="mu-contact-content">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="mu-contact-left">
+                                        <!-- Email message div -->
+                                        <div id="form-messages"></div>
+                                        <!-- Start contact form -->
+                                        <form @*id="ajax-contact"*@ method="post" @*action="mailer.php"*@ class="mu-contact-form" action="Iletisim">
+                                            <div class="form-group">
+                                                <label for="name" color="#008b8b">Adınız Soyadınız</label>
+                                                <textarea class="form-control" id="AdSoyad" name="AdSoyad" placeholder="Adınız Soyadınız" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" color="#008b8b">Mail adresiniz</label>
+                                                <textarea class="form-control" id="Mail" name="Mail" placeholder="Mail" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject" color="#008b8b">Konu</label>
+                                                <textarea class="form-control" id="Konu" name="Konu" placeholder="Konu" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message" color="#008b8b">Mesajınız</label>
+                                                <textarea class="form-control" id="Mesaj" name="Mesaj" cols="30" rows="10" placeholder="Mesajınız" required></textarea>
+                                            </div>
+                                            <button type="submit" class="mu-send-btn" value="Send" id="btn1">Mesajı Gönder</button>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mu-contact-right">
+                                        <div class="mu-contact-widget">
+                                            <h3><font class="baslik" id="baslik" color="#008b8b" font-family="Tangerine">Adresimiz</font></h3>
+
+                                            <p> </p>
+                                            <address>
+                                                @foreach (var iletisim in Model.Item1)
+                                                {
+
+                                                    <p><i class="fa fa-phone"></i> @iletisim.Tel</p>
+                                                    <p><i class="fa fa-envelope-o"></i>@iletisim.Eposta</p>
+                                                    <p><i class="fa fa-map-marker"></i>@iletisim.Adres</p>
+
+                                                }
+                                            </address>
+                                        </div>
+                                        <div class="mu-contact-widget">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <h3><font color="#008b8b">Çalışma Saatleri</font></h3>
+                                                        <address>
+                                                            @foreach (var calisma in Model.Item2)
+                                                            {
+                                                                <table width="150">
+                                                                    <tr>
+
+                                                                        <td width="100">
+                                                                            <span>@calisma.Gün</span>
+                                                                        </td>
+
+                                                                        <td width="50">
+                                                                            <span>@calisma.Saat</span>
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                </table>
+                                                            }
+                                                        </address>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <table>
+                                                        <tr>
+
+                                                            <section id="mu-map">
+                                                                @foreach (var iletisim in Model.Item1)
+                                                                {
+
+                                                                    <iframe src=@iletisim.HaritaYolu frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+                                                                }
+                                                            </section>
+
+                                                        </tr>
+                                                    </table>
+                                                </tr>
+                                            </table>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- End Contact section -->
+    <!-- Start Map section -->
+
+
+
+    <!-- End Map section -->
+    @section Scripts{
+        <script>
+
+         $(document).on('click', '#btn1', function(){
+                alert("Mesajınız Başarıyla İletildi...!");
+
+        });
+        </script>
+    }
+}
+

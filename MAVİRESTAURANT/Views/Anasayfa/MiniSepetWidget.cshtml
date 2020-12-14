@@ -1,0 +1,192 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Sepet
+<style>
+    .cart-all {
+        border-left: 1px solid #474747;
+        display: inline-block;
+        *zoom: 1;
+        *display: inline;
+        padding: 10px 15px;
+        font-size: 12px;
+        color: #999;
+        cursor: pointer;
+        position: relative;
+    }
+
+        .cart-all i {
+            font-size: 15px;
+            margin-right: 8px;
+            color: #f1f1f1;
+            font-weight: 700;
+        }
+
+        .cart-all:hover .inside-cart {
+            display: block;
+        }
+
+        .cart-all .inside-cart {
+            position: absolute;
+            background: #fff;
+            border-top: 4px solid #191919;
+            margin-top: 10px;
+            right: 0;
+            width: 270px;
+            display: none;
+        }
+
+            .cart-all .inside-cart p {
+                color: #191919;
+                padding: 15px 30px;
+                border: 1px solid #d9d9d9;
+                border-top: 0 solid #d9d9d9;
+                border-bottom: 0 solid #d9d9d9;
+                margin: 0;
+            }
+
+            .cart-all .inside-cart ul {
+                background: #fff;
+                border-bottom: 1px solid #d9d9d9;
+                padding-bottom: 20px;
+            }
+
+                .cart-all .inside-cart ul li {
+                    border-top: 1px solid #d9d9d9;
+                    display: block;
+                    background: #fff;
+                    padding: 15px 30px 15px 110px;
+                    min-height: 100px;
+                }
+
+                    .cart-all .inside-cart ul li button {
+                        width: 20px;
+                        font-size: 10px;
+                        color: #191919;
+                        background: #fff;
+                        border: 1px solid #ddd;
+                        height: 20px;
+                        text-align: center;
+                        float: right;
+                        margin: 0;
+                        line-height: 1em;
+                        margin-left: 5px;
+                        font-weight: 700;
+                        padding: 0;
+                    }
+
+                        .cart-all .inside-cart ul li button:hover {
+                            background: #f1f1f1;
+                        }
+
+                    .cart-all .inside-cart ul li a {
+                        padding: 0;
+                        margin: 0;
+                        color: #2685bc;
+                        text-transform: none;
+                        font-size: 14px;
+                        background: #fff;
+                    }
+
+                        .cart-all .inside-cart ul li a:hover {
+                            background: #fff;
+                            color: #df294b;
+                        }
+
+                    .cart-all .inside-cart ul li p {
+                        padding: 0;
+                        margin: 0;
+                        font-size: 12px;
+                        border: 0;
+                    }
+
+                    .cart-all .inside-cart ul li .inside-cart-image {
+                        width: 60px;
+                        margin-left: -80px;
+                        float: left;
+                    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        $(".urunSil").click(function() {
+            var uId = $(this).attr("name");
+            $.ajax({
+                type: "GET",
+                url: "/Anasayfa/SepetUrunAdetDusur",
+                data: { id: uId },
+                success: function myfunction() {
+                alert("Ürün Sepeten Silindi");
+                    $.ajax({
+                        type: "GET",
+                        url: "/Anasayfa/MiniSepetWidget",
+                        success: function myfunction(veri) {
+                            $(".cart-all").html('');
+                            $(".cart-all").html(veri);
+                        }
+
+                    });
+                },
+                error: function myfunction() {
+                    alert("error");
+                }
+            });
+        });
+    })
+</script>
+<li>
+    <div class="cart-all">
+        <img src="~/Content/Mavi/img/877012-32.png" />
+        <i class="icon-19" title="19">
+        </i> @if (Model != null)
+              {
+            @Model.ToplamTutar.ToString("C2");
+              }
+        else
+        {
+            <span>0 TL</span>
+        }
+
+        <div class="inside-cart">
+            <p>
+                @if (Model != null)
+            {
+                    <span>Sepette Toplam @Model.SepetUrunler.Sum(x => x.Adet) Tane Ürün Bulunmaktadır. </span>
+                }
+                else
+                {
+                  <span>Sepette Toplam 0 Ürün bulunmaktadır.</span>
+                }
+            </p>
+            <ul>
+
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model.SepetUrunler)
+                    {
+                        <li>
+                            <div class="inside-cart-image">
+                                @if (item.yemek.Resim != null)
+                                {
+                                    <img src="~/Content/Mavi/img/menu/@item.yemek.Resim.ResimAd" alt="product name">
+                                }
+                            </div>
+                            <a class="urunSil" name="@item.yemek.UrunId">X</a>
+                            @if (Model != null)
+                            {
+
+                            }
+                            <a >
+                                @item.yemek.UrunAd
+                            </a>
+                            <p>Tutar: @item.Tutar.ToString("C2")</p>
+                            <p>Adet: @item.Adet</p>
+                        </li>
+
+                    }
+                }
+              <p > @Html.ActionLink("Siparişi Onayla", "Odeme", "Odeme")</p>
+            </ul>
+
+
+        </div>
+    </div>
+</li>

@@ -1,0 +1,62 @@
+﻿@model List<MAVİRESTAURANT.Models.Entity.TeslimatKosullari>
+@{
+    ViewBag.Title = "TeslimatKosullari";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml"; 
+ }
+
+<section id="TeslimatKosullari.cshtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+                    <br />
+
+                    @foreach (var TeslimatKosullari in Model)
+                    {
+                        if (TeslimatKosullari.MetinDurum == true)
+                        {
+                    <div class="mu-title">
+
+                        <br />
+                        <br />
+                        <span class="mu-subtitle">@TeslimatKosullari.TeslimatBaslik</span>
+                        <br />
+                        <br />
+
+
+                    </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mu-about-us-left">
+                                        <img src="~/Content/Mavi/img/@TeslimatKosullari.Resim.ResimAd" alt="img">
+                                        @*<img src="~/Content/Mavi/img/original.jpg" alt="img">*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="mu-about-us-right">
+
+                                        
+                                        <p>@TeslimatKosullari.TeslimatMetin1 </p>
+                                        <br />
+                                        <p>@TeslimatKosullari.TeslimatMetin2 </p>
+                                        <br />
+                                        <p>@TeslimatKosullari.TeslimatMetin3</p>
+                                        <br />
+                                        <p>@TeslimatKosullari.TeslimatMetin4</p>
+                                        <br />
+                                        <br />
+                                        <br />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

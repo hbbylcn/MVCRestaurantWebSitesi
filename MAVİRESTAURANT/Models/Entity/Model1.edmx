@@ -1,0 +1,1056 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbmaviwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CalismaPlani">
+          <Key>
+            <PropertyRef Name="Calısma_Id" />
+          </Key>
+          <Property Name="Calısma_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gün" Type="nvarchar" MaxLength="30" />
+          <Property Name="Saat" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="CokSatanlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunId" Type="int" />
+        </EntityType>
+        <EntityType Name="Galeri">
+          <Key>
+            <PropertyRef Name="GaleriId" />
+          </Key>
+          <Property Name="GaleriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResimId" Type="int" />
+        </EntityType>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="Hakkimizda_Id" />
+          </Key>
+          <Property Name="Hakkimizda_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HakkimizdaResim" Type="int" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Paragraf1" Type="nvarchar(max)" />
+          <Property Name="Paragraf2" Type="nvarchar(max)" />
+          <Property Name="Paragraf3" Type="nvarchar(max)" />
+          <Property Name="Paragraf4" Type="nvarchar(max)" />
+          <Property Name="Paragraf5" Type="nvarchar(max)" />
+          <Property Name="Paragraf6" Type="nvarchar(max)" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Iletisim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="70" />
+          <Property Name="Mesaj" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="IletisimBilgileri">
+          <Key>
+            <PropertyRef Name="Iletisimbilgi_Id" />
+          </Key>
+          <Property Name="Iletisimbilgi_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="30" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="70" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="20" />
+          <Property Name="HaritaYolu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Kategori_Id" />
+          </Key>
+          <Property Name="Kategori_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategori_adi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OdemeKosullari">
+          <Key>
+            <PropertyRef Name="OdemeKosul_Id" />
+          </Key>
+          <Property Name="OdemeKosul_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KosulResim" Type="int" />
+          <Property Name="KosulBaslik1" Type="nvarchar" MaxLength="50" />
+          <Property Name="KosulBaslik2" Type="nvarchar" MaxLength="50" />
+          <Property Name="KosulBaslik3" Type="nvarchar" MaxLength="50" />
+          <Property Name="KosulParagraf1" Type="nvarchar(max)" />
+          <Property Name="KosulParagraf2" Type="nvarchar(max)" />
+          <Property Name="KosulParagraf3" Type="nvarchar(max)" />
+          <Property Name="KosulParagraf4" Type="nvarchar(max)" />
+          <Property Name="KosulParagraf5" Type="nvarchar(max)" />
+          <Property Name="KosulDurum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Resim">
+          <Key>
+            <PropertyRef Name="Resim_Id" />
+          </Key>
+          <Property Name="Resim_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResimAd" Type="nvarchar(max)" />
+          <Property Name="ResimYol" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Rezervasyon">
+          <Key>
+            <PropertyRef Name="Rezno" />
+          </Key>
+          <Property Name="Rezno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="60" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" />
+          <Property Name="KisiSayisi" Type="nvarchar" MaxLength="30" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Saat" Type="nvarchar" MaxLength="30" />
+          <Property Name="Mesaj" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="siparis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="urunad" Type="nvarchar" MaxLength="50" />
+          <Property Name="adet" Type="int" />
+          <Property Name="fiyat" Type="nvarchar" MaxLength="50" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TeslimatKosullari">
+          <Key>
+            <PropertyRef Name="Teslimat_Id" />
+          </Key>
+          <Property Name="Teslimat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeslimatResim" Type="int" />
+          <Property Name="TeslimatBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeslimatMetin1" Type="nvarchar(max)" />
+          <Property Name="TeslimatMetin2" Type="nvarchar(max)" />
+          <Property Name="TeslimatMetin3" Type="nvarchar(max)" />
+          <Property Name="TeslimatMetin4" Type="nvarchar(max)" />
+          <Property Name="MetinDurum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunKod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kategori" Type="int" />
+          <Property Name="UrunAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stok" Type="int" />
+          <Property Name="UrunResim" Type="int" />
+          <Property Name="Fiyat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Yorum">
+          <Key>
+            <PropertyRef Name="Yorum_Id" />
+          </Key>
+          <Property Name="Yorum_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yorum" Type="nvarchar(max)" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_CokSatanlar_Urunler">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+          <End Role="CokSatanlar" Type="Self.CokSatanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="CokSatanlar">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Galeri_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="Galeri">
+              <PropertyRef Name="ResimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hakkimizda_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="Hakkimizda" Type="Self.Hakkimizda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="Hakkimizda">
+              <PropertyRef Name="HakkimizdaResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OdemeKosullari_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="OdemeKosullari" Type="Self.OdemeKosullari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="OdemeKosullari">
+              <PropertyRef Name="KosulResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeslimatKosullari_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="TeslimatKosullari" Type="Self.TeslimatKosullari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="TeslimatKosullari">
+              <PropertyRef Name="TeslimatResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Resim">
+          <End Role="Resim" Type="Self.Resim" Multiplicity="0..1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="UrunResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbmaviwebModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalismaPlani" EntityType="Self.CalismaPlani" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CokSatanlar" EntityType="Self.CokSatanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galeri" EntityType="Self.Galeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hakkimizda" EntityType="Self.Hakkimizda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iletisim" EntityType="Self.Iletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IletisimBilgileri" EntityType="Self.IletisimBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OdemeKosullari" EntityType="Self.OdemeKosullari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resim" EntityType="Self.Resim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezervasyon" EntityType="Self.Rezervasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="siparis" EntityType="Self.siparis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeslimatKosullari" EntityType="Self.TeslimatKosullari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CokSatanlar_Urunler" Association="Self.FK_CokSatanlar_Urunler">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="CokSatanlar" EntitySet="CokSatanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Galeri_Resim" Association="Self.FK_Galeri_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="Galeri" EntitySet="Galeri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hakkimizda_Resim" Association="Self.FK_Hakkimizda_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="Hakkimizda" EntitySet="Hakkimizda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OdemeKosullari_Resim" Association="Self.FK_OdemeKosullari_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="OdemeKosullari" EntitySet="OdemeKosullari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeslimatKosullari_Resim" Association="Self.FK_TeslimatKosullari_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="TeslimatKosullari" EntitySet="TeslimatKosullari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Kategori" Association="Self.FK_Urunler_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Resim" Association="Self.FK_Urunler_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbmaviwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbmaviwebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="dbmaviwebModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="dbmaviwebModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="dbmaviwebModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="dbmaviwebModel.AspNetUsers" />
+          <EntitySet Name="CalismaPlani" EntityType="dbmaviwebModel.CalismaPlani" />
+          <EntitySet Name="CokSatanlar" EntityType="dbmaviwebModel.CokSatanlar" />
+          <EntitySet Name="Galeri" EntityType="dbmaviwebModel.Galeri" />
+          <EntitySet Name="Hakkimizda" EntityType="dbmaviwebModel.Hakkimizda" />
+          <EntitySet Name="Iletisim" EntityType="dbmaviwebModel.Iletisim" />
+          <EntitySet Name="IletisimBilgileri" EntityType="dbmaviwebModel.IletisimBilgileri" />
+          <EntitySet Name="Kategori" EntityType="dbmaviwebModel.Kategori" />
+          <EntitySet Name="OdemeKosullari" EntityType="dbmaviwebModel.OdemeKosullari" />
+          <EntitySet Name="Resim" EntityType="dbmaviwebModel.Resim" />
+          <EntitySet Name="Rezervasyon" EntityType="dbmaviwebModel.Rezervasyon" />
+          <EntitySet Name="siparis" EntityType="dbmaviwebModel.siparis" />
+          <EntitySet Name="TeslimatKosullari" EntityType="dbmaviwebModel.TeslimatKosullari" />
+          <EntitySet Name="Urunler" EntityType="dbmaviwebModel.Urunler" />
+          <EntitySet Name="Yorum" EntityType="dbmaviwebModel.Yorum" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="dbmaviwebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="dbmaviwebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CokSatanlar_Urunler" Association="dbmaviwebModel.FK_CokSatanlar_Urunler">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="CokSatanlar" EntitySet="CokSatanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Galeri_Resim" Association="dbmaviwebModel.FK_Galeri_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="Galeri" EntitySet="Galeri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hakkimizda_Resim" Association="dbmaviwebModel.FK_Hakkimizda_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="Hakkimizda" EntitySet="Hakkimizda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Kategori" Association="dbmaviwebModel.FK_Urunler_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OdemeKosullari_Resim" Association="dbmaviwebModel.FK_OdemeKosullari_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="OdemeKosullari" EntitySet="OdemeKosullari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeslimatKosullari_Resim" Association="dbmaviwebModel.FK_TeslimatKosullari_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="TeslimatKosullari" EntitySet="TeslimatKosullari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_Resim" Association="dbmaviwebModel.FK_Urunler_Resim">
+            <End Role="Resim" EntitySet="Resim" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="dbmaviwebModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="dbmaviwebModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="dbmaviwebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="dbmaviwebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="dbmaviwebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="dbmaviwebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="dbmaviwebModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CalismaPlani">
+          <Key>
+            <PropertyRef Name="Calısma_Id" />
+          </Key>
+          <Property Name="Calısma_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gün" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Saat" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CokSatanlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunId" Type="Int32" />
+          <NavigationProperty Name="Urunler" Relationship="dbmaviwebModel.FK_CokSatanlar_Urunler" FromRole="CokSatanlar" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Galeri">
+          <Key>
+            <PropertyRef Name="GaleriId" />
+          </Key>
+          <Property Name="GaleriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResimId" Type="Int32" />
+          <NavigationProperty Name="Resim" Relationship="dbmaviwebModel.FK_Galeri_Resim" FromRole="Galeri" ToRole="Resim" />
+        </EntityType>
+        <EntityType Name="Hakkimizda">
+          <Key>
+            <PropertyRef Name="Hakkimizda_Id" />
+          </Key>
+          <Property Name="Hakkimizda_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HakkimizdaResim" Type="Int32" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraf1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraf2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraf3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraf4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraf5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraf6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="Resim" Relationship="dbmaviwebModel.FK_Hakkimizda_Resim" FromRole="Hakkimizda" ToRole="Resim" />
+        </EntityType>
+        <EntityType Name="Iletisim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IletisimBilgileri">
+          <Key>
+            <PropertyRef Name="Iletisimbilgi_Id" />
+          </Key>
+          <Property Name="Iletisimbilgi_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eposta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HaritaYolu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Kategori_Id" />
+          </Key>
+          <Property Name="Kategori_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategori_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Urunler" Relationship="dbmaviwebModel.FK_Urunler_Kategori" FromRole="Kategori" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="OdemeKosullari">
+          <Key>
+            <PropertyRef Name="OdemeKosul_Id" />
+          </Key>
+          <Property Name="OdemeKosul_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KosulResim" Type="Int32" />
+          <Property Name="KosulBaslik1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KosulBaslik2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KosulBaslik3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KosulParagraf1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KosulParagraf2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KosulParagraf3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KosulParagraf4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KosulParagraf5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KosulDurum" Type="Boolean" />
+          <NavigationProperty Name="Resim" Relationship="dbmaviwebModel.FK_OdemeKosullari_Resim" FromRole="OdemeKosullari" ToRole="Resim" />
+        </EntityType>
+        <EntityType Name="Resim">
+          <Key>
+            <PropertyRef Name="Resim_Id" />
+          </Key>
+          <Property Name="Resim_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResimAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResimYol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Galeri" Relationship="dbmaviwebModel.FK_Galeri_Resim" FromRole="Resim" ToRole="Galeri" />
+          <NavigationProperty Name="Hakkimizda" Relationship="dbmaviwebModel.FK_Hakkimizda_Resim" FromRole="Resim" ToRole="Hakkimizda" />
+          <NavigationProperty Name="OdemeKosullari" Relationship="dbmaviwebModel.FK_OdemeKosullari_Resim" FromRole="Resim" ToRole="OdemeKosullari" />
+          <NavigationProperty Name="TeslimatKosullari" Relationship="dbmaviwebModel.FK_TeslimatKosullari_Resim" FromRole="Resim" ToRole="TeslimatKosullari" />
+          <NavigationProperty Name="Urunler" Relationship="dbmaviwebModel.FK_Urunler_Resim" FromRole="Resim" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Rezervasyon">
+          <Key>
+            <PropertyRef Name="Rezno" />
+          </Key>
+          <Property Name="Rezno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="KisiSayisi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Saat" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="siparis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urunad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adet" Type="Int32" />
+          <Property Name="fiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TeslimatKosullari">
+          <Key>
+            <PropertyRef Name="Teslimat_Id" />
+          </Key>
+          <Property Name="Teslimat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeslimatResim" Type="Int32" />
+          <Property Name="TeslimatBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimatMetin1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimatMetin2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimatMetin3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeslimatMetin4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetinDurum" Type="Boolean" />
+          <NavigationProperty Name="Resim" Relationship="dbmaviwebModel.FK_TeslimatKosullari_Resim" FromRole="TeslimatKosullari" ToRole="Resim" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunKod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kategori" Type="Int32" />
+          <Property Name="UrunAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stok" Type="Int32" />
+          <Property Name="UrunResim" Type="Int32" />
+          <Property Name="Fiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="CokSatanlar" Relationship="dbmaviwebModel.FK_CokSatanlar_Urunler" FromRole="Urunler" ToRole="CokSatanlar" />
+          <NavigationProperty Name="Kategori1" Relationship="dbmaviwebModel.FK_Urunler_Kategori" FromRole="Urunler" ToRole="Kategori" />
+          <NavigationProperty Name="Resim" Relationship="dbmaviwebModel.FK_Urunler_Resim" FromRole="Urunler" ToRole="Resim" />
+        </EntityType>
+        <EntityType Name="Yorum">
+          <Key>
+            <PropertyRef Name="Yorum_Id" />
+          </Key>
+          <Property Name="Yorum_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yorum1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdSoyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="dbmaviwebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbmaviwebModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="dbmaviwebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbmaviwebModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CokSatanlar_Urunler">
+          <End Type="dbmaviwebModel.Urunler" Role="Urunler" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.CokSatanlar" Role="CokSatanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="CokSatanlar">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Galeri_Resim">
+          <End Type="dbmaviwebModel.Resim" Role="Resim" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.Galeri" Role="Galeri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="Galeri">
+              <PropertyRef Name="ResimId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hakkimizda_Resim">
+          <End Type="dbmaviwebModel.Resim" Role="Resim" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.Hakkimizda" Role="Hakkimizda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="Hakkimizda">
+              <PropertyRef Name="HakkimizdaResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Kategori">
+          <End Type="dbmaviwebModel.Kategori" Role="Kategori" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.Urunler" Role="Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Kategori_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OdemeKosullari_Resim">
+          <End Type="dbmaviwebModel.Resim" Role="Resim" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.OdemeKosullari" Role="OdemeKosullari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="OdemeKosullari">
+              <PropertyRef Name="KosulResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeslimatKosullari_Resim">
+          <End Type="dbmaviwebModel.Resim" Role="Resim" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.TeslimatKosullari" Role="TeslimatKosullari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="TeslimatKosullari">
+              <PropertyRef Name="TeslimatResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_Resim">
+          <End Type="dbmaviwebModel.Resim" Role="Resim" Multiplicity="0..1" />
+          <End Type="dbmaviwebModel.Urunler" Role="Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resim">
+              <PropertyRef Name="Resim_Id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="UrunResim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="dbmaviwebModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="dbmaviwebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbmaviwebModelStoreContainer" CdmEntityContainer="dbmaviwebEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="dbmaviwebModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="dbmaviwebModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="dbmaviwebModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="dbmaviwebModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalismaPlani">
+            <EntityTypeMapping TypeName="dbmaviwebModel.CalismaPlani">
+              <MappingFragment StoreEntitySet="CalismaPlani">
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+                <ScalarProperty Name="Gün" ColumnName="Gün" />
+                <ScalarProperty Name="Calısma_Id" ColumnName="Calısma_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CokSatanlar">
+            <EntityTypeMapping TypeName="dbmaviwebModel.CokSatanlar">
+              <MappingFragment StoreEntitySet="CokSatanlar">
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galeri">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Galeri">
+              <MappingFragment StoreEntitySet="Galeri">
+                <ScalarProperty Name="ResimId" ColumnName="ResimId" />
+                <ScalarProperty Name="GaleriId" ColumnName="GaleriId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hakkimizda">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Hakkimizda">
+              <MappingFragment StoreEntitySet="Hakkimizda">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Paragraf6" ColumnName="Paragraf6" />
+                <ScalarProperty Name="Paragraf5" ColumnName="Paragraf5" />
+                <ScalarProperty Name="Paragraf4" ColumnName="Paragraf4" />
+                <ScalarProperty Name="Paragraf3" ColumnName="Paragraf3" />
+                <ScalarProperty Name="Paragraf2" ColumnName="Paragraf2" />
+                <ScalarProperty Name="Paragraf1" ColumnName="Paragraf1" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="HakkimizdaResim" ColumnName="HakkimizdaResim" />
+                <ScalarProperty Name="Hakkimizda_Id" ColumnName="Hakkimizda_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iletisim">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Iletisim">
+              <MappingFragment StoreEntitySet="Iletisim">
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IletisimBilgileri">
+            <EntityTypeMapping TypeName="dbmaviwebModel.IletisimBilgileri">
+              <MappingFragment StoreEntitySet="IletisimBilgileri">
+                <ScalarProperty Name="HaritaYolu" ColumnName="HaritaYolu" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="Iletisimbilgi_Id" ColumnName="Iletisimbilgi_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="Kategori_adi" ColumnName="Kategori_adi" />
+                <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdemeKosullari">
+            <EntityTypeMapping TypeName="dbmaviwebModel.OdemeKosullari">
+              <MappingFragment StoreEntitySet="OdemeKosullari">
+                <ScalarProperty Name="KosulDurum" ColumnName="KosulDurum" />
+                <ScalarProperty Name="KosulParagraf5" ColumnName="KosulParagraf5" />
+                <ScalarProperty Name="KosulParagraf4" ColumnName="KosulParagraf4" />
+                <ScalarProperty Name="KosulParagraf3" ColumnName="KosulParagraf3" />
+                <ScalarProperty Name="KosulParagraf2" ColumnName="KosulParagraf2" />
+                <ScalarProperty Name="KosulParagraf1" ColumnName="KosulParagraf1" />
+                <ScalarProperty Name="KosulBaslik3" ColumnName="KosulBaslik3" />
+                <ScalarProperty Name="KosulBaslik2" ColumnName="KosulBaslik2" />
+                <ScalarProperty Name="KosulBaslik1" ColumnName="KosulBaslik1" />
+                <ScalarProperty Name="KosulResim" ColumnName="KosulResim" />
+                <ScalarProperty Name="OdemeKosul_Id" ColumnName="OdemeKosul_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resim">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Resim">
+              <MappingFragment StoreEntitySet="Resim">
+                <ScalarProperty Name="ResimYol" ColumnName="ResimYol" />
+                <ScalarProperty Name="ResimAd" ColumnName="ResimAd" />
+                <ScalarProperty Name="Resim_Id" ColumnName="Resim_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezervasyon">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Rezervasyon">
+              <MappingFragment StoreEntitySet="Rezervasyon">
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="KisiSayisi" ColumnName="KisiSayisi" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Rezno" ColumnName="Rezno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="siparis">
+            <EntityTypeMapping TypeName="dbmaviwebModel.siparis">
+              <MappingFragment StoreEntitySet="siparis">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="adet" ColumnName="adet" />
+                <ScalarProperty Name="urunad" ColumnName="urunad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeslimatKosullari">
+            <EntityTypeMapping TypeName="dbmaviwebModel.TeslimatKosullari">
+              <MappingFragment StoreEntitySet="TeslimatKosullari">
+                <ScalarProperty Name="MetinDurum" ColumnName="MetinDurum" />
+                <ScalarProperty Name="TeslimatMetin4" ColumnName="TeslimatMetin4" />
+                <ScalarProperty Name="TeslimatMetin3" ColumnName="TeslimatMetin3" />
+                <ScalarProperty Name="TeslimatMetin2" ColumnName="TeslimatMetin2" />
+                <ScalarProperty Name="TeslimatMetin1" ColumnName="TeslimatMetin1" />
+                <ScalarProperty Name="TeslimatBaslik" ColumnName="TeslimatBaslik" />
+                <ScalarProperty Name="TeslimatResim" ColumnName="TeslimatResim" />
+                <ScalarProperty Name="Teslimat_Id" ColumnName="Teslimat_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urunler">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Urunler">
+              <MappingFragment StoreEntitySet="Urunler">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="UrunResim" ColumnName="UrunResim" />
+                <ScalarProperty Name="Stok" ColumnName="Stok" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+                <ScalarProperty Name="UrunKod" ColumnName="UrunKod" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorum">
+            <EntityTypeMapping TypeName="dbmaviwebModel.Yorum">
+              <MappingFragment StoreEntitySet="Yorum">
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Yorum1" ColumnName="Yorum" />
+                <ScalarProperty Name="Yorum_Id" ColumnName="Yorum_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="dbmaviwebModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

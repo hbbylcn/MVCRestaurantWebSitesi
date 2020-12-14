@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbmaviwebModelStoreContainer" CdmEntityContainer="dbmaviwebEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="dbmaviwebModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="dbmaviwebModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="dbmaviwebModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="dbmaviwebModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalismaPlani">
+      <EntityTypeMapping TypeName="dbmaviwebModel.CalismaPlani">
+        <MappingFragment StoreEntitySet="CalismaPlani">
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+          <ScalarProperty Name="Gün" ColumnName="Gün" />
+          <ScalarProperty Name="Calısma_Id" ColumnName="Calısma_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CokSatanlar">
+      <EntityTypeMapping TypeName="dbmaviwebModel.CokSatanlar">
+        <MappingFragment StoreEntitySet="CokSatanlar">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galeri">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Galeri">
+        <MappingFragment StoreEntitySet="Galeri">
+          <ScalarProperty Name="ResimId" ColumnName="ResimId" />
+          <ScalarProperty Name="GaleriId" ColumnName="GaleriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hakkimizda">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Hakkimizda">
+        <MappingFragment StoreEntitySet="Hakkimizda">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Paragraf6" ColumnName="Paragraf6" />
+          <ScalarProperty Name="Paragraf5" ColumnName="Paragraf5" />
+          <ScalarProperty Name="Paragraf4" ColumnName="Paragraf4" />
+          <ScalarProperty Name="Paragraf3" ColumnName="Paragraf3" />
+          <ScalarProperty Name="Paragraf2" ColumnName="Paragraf2" />
+          <ScalarProperty Name="Paragraf1" ColumnName="Paragraf1" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="HakkimizdaResim" ColumnName="HakkimizdaResim" />
+          <ScalarProperty Name="Hakkimizda_Id" ColumnName="Hakkimizda_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Iletisim">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Iletisim">
+        <MappingFragment StoreEntitySet="Iletisim">
+          <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+          <ScalarProperty Name="Konu" ColumnName="Konu" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IletisimBilgileri">
+      <EntityTypeMapping TypeName="dbmaviwebModel.IletisimBilgileri">
+        <MappingFragment StoreEntitySet="IletisimBilgileri">
+          <ScalarProperty Name="HaritaYolu" ColumnName="HaritaYolu" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+          <ScalarProperty Name="Iletisimbilgi_Id" ColumnName="Iletisimbilgi_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="Kategori_adi" ColumnName="Kategori_adi" />
+          <ScalarProperty Name="Kategori_Id" ColumnName="Kategori_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OdemeKosullari">
+      <EntityTypeMapping TypeName="dbmaviwebModel.OdemeKosullari">
+        <MappingFragment StoreEntitySet="OdemeKosullari">
+          <ScalarProperty Name="KosulDurum" ColumnName="KosulDurum" />
+          <ScalarProperty Name="KosulParagraf5" ColumnName="KosulParagraf5" />
+          <ScalarProperty Name="KosulParagraf4" ColumnName="KosulParagraf4" />
+          <ScalarProperty Name="KosulParagraf3" ColumnName="KosulParagraf3" />
+          <ScalarProperty Name="KosulParagraf2" ColumnName="KosulParagraf2" />
+          <ScalarProperty Name="KosulParagraf1" ColumnName="KosulParagraf1" />
+          <ScalarProperty Name="KosulBaslik3" ColumnName="KosulBaslik3" />
+          <ScalarProperty Name="KosulBaslik2" ColumnName="KosulBaslik2" />
+          <ScalarProperty Name="KosulBaslik1" ColumnName="KosulBaslik1" />
+          <ScalarProperty Name="KosulResim" ColumnName="KosulResim" />
+          <ScalarProperty Name="OdemeKosul_Id" ColumnName="OdemeKosul_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resim">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Resim">
+        <MappingFragment StoreEntitySet="Resim">
+          <ScalarProperty Name="ResimYol" ColumnName="ResimYol" />
+          <ScalarProperty Name="ResimAd" ColumnName="ResimAd" />
+          <ScalarProperty Name="Resim_Id" ColumnName="Resim_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezervasyon">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Rezervasyon">
+        <MappingFragment StoreEntitySet="Rezervasyon">
+          <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="KisiSayisi" ColumnName="KisiSayisi" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="Rezno" ColumnName="Rezno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="siparis">
+      <EntityTypeMapping TypeName="dbmaviwebModel.siparis">
+        <MappingFragment StoreEntitySet="siparis">
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+          <ScalarProperty Name="adet" ColumnName="adet" />
+          <ScalarProperty Name="urunad" ColumnName="urunad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeslimatKosullari">
+      <EntityTypeMapping TypeName="dbmaviwebModel.TeslimatKosullari">
+        <MappingFragment StoreEntitySet="TeslimatKosullari">
+          <ScalarProperty Name="MetinDurum" ColumnName="MetinDurum" />
+          <ScalarProperty Name="TeslimatMetin4" ColumnName="TeslimatMetin4" />
+          <ScalarProperty Name="TeslimatMetin3" ColumnName="TeslimatMetin3" />
+          <ScalarProperty Name="TeslimatMetin2" ColumnName="TeslimatMetin2" />
+          <ScalarProperty Name="TeslimatMetin1" ColumnName="TeslimatMetin1" />
+          <ScalarProperty Name="TeslimatBaslik" ColumnName="TeslimatBaslik" />
+          <ScalarProperty Name="TeslimatResim" ColumnName="TeslimatResim" />
+          <ScalarProperty Name="Teslimat_Id" ColumnName="Teslimat_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urunler">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Urunler">
+        <MappingFragment StoreEntitySet="Urunler">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="UrunResim" ColumnName="UrunResim" />
+          <ScalarProperty Name="Stok" ColumnName="Stok" />
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+          <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+          <ScalarProperty Name="UrunKod" ColumnName="UrunKod" />
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yorum">
+      <EntityTypeMapping TypeName="dbmaviwebModel.Yorum">
+        <MappingFragment StoreEntitySet="Yorum">
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="Yorum1" ColumnName="Yorum" />
+          <ScalarProperty Name="Yorum_Id" ColumnName="Yorum_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="dbmaviwebModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

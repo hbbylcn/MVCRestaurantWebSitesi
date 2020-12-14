@@ -1,0 +1,389 @@
+﻿@model Tuple<List<MAVİRESTAURANT.Models.Entity.Hakkimizda>,List<MAVİRESTAURANT.Models.Entity.CokSatanlar>,List<MAVİRESTAURANT.Models.Entity.Yorum>,List<MAVİRESTAURANT.Models.Entity.CalismaPlani>>
+
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+@section Scripts{
+<script>
+    $(document).ready(function() {
+        $(".sepeteAt").click(function() {
+
+            var uid = $(this).attr("name");
+            $.ajax({
+                type: "GET",
+                url: "/Anasayfa/SepeteEkle",
+                data: { id: uid },
+                success: function myFunction() {
+                    alert("Ürün Sepete Eklendi");
+                    $.ajax({
+                        type: "GET",
+                        url: "/Anasayfa/MiniSepetWidget",
+                        success: function VeriGetir(veri) {
+                            $(".cart-all").html('');
+                            $(".cart-all").html(veri);
+                        }
+                    });
+                },
+                error: function myFunction() {
+                    alert("Ürün Ekleme Başarısız!");
+                }
+            })
+        });
+    });
+</script>
+    }
+<section id="mu-slider">
+    <div class="mu-slider-area">
+        <!-- Top slider -->
+        <div class="mu-top-slider">
+
+                <!-- Top slider single slide -->
+                <div class="mu-top-slider-single">
+                    <img src="~/Content/Mavi/img/slider/05.jpg" alt="img">
+
+                    <!-- Top slider content -->
+                    <div class="mu-top-slider-content">
+                        <span class="mu-slider-small-title">MAVI</span>
+                        <br />
+                        <br />
+                        <br />
+                        <font color="white" face="Open Sans" size="60"><b>Lezzet durağına hoşgeldiniz.</b></font>
+                        <p>Zengin içeriğiyle birbirinden lezzetli yemekler Mavide.</p>
+                        <a class="mu-readmore-btn mu-chef-btn" href="@Url.Action("Menu", "Menu")">MENU</a>
+                    </div>
+                    <!-- / Top slider content -->
+                </div>
+            <!-- / Top slider single slide -->
+            <!-- Top slider single slide -->
+            <div class="mu-top-slider-single">
+                <img src="~/Content/Mavi/img/slider/08.jpg" alt="img">
+                <!-- Top slider content -->
+                <div class="mu-top-slider-content">
+                    <span class="mu-slider-small-title">MAVI</span>
+                    <br />
+                    <br />
+                    <br />
+                    <font color="white" face="Open Sans" size="60"><b>Yüzünüzdeki gülümseme için çalışıyoruz.</b></font>
+                    <p>Özel günlerinizi daha özel hale getiriyoruz.</p>
+                    <a class="mu-readmore-btn mu-chef-btn" href="@Url.Action("Rezervasyon", "Rezervasyon")">REZERVASYON</a>
+                </div>
+                <!-- / Top slider content -->
+            </div>
+            <!-- / Top slider single slide -->
+            <!-- Top slider single slide -->
+            <div class="mu-top-slider-single">
+                <img src="~/Content/Mavi/img/slider/tmutfak.jpg" alt="img">
+                <!-- Top slider content -->
+                <div class="mu-top-slider-content">
+                    <span class="mu-slider-small-title">MAVI</span>
+                    <br />
+                    <br />
+                    <br />
+                    <font color="white" face="Open Sans" size="60"><b>Siz neredeyseniz biz de sizinleyiz.</b></font>
+                    <p>Lezzetlerimizi bulunduğunuz yere getiriyoruz.</p>
+                    <a class="mu-readmore-btn mu-chef-btn" href="@Url.Action("Galeri", "Galeri")">GALERİ</a>
+                </div>
+                <!-- / Top slider content -->
+            </div>
+            <!-- / Top slider single slide -->
+
+        </div>
+    </div>
+</section>
+<section id="Hakkimizda.cshtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+                   @foreach (var Hakkimizda in Model.Item1)
+                   {
+
+
+                        if (Hakkimizda.Durum == true)
+                        {
+                            <br>
+                            <div class="mu-title">
+                                <br>
+                                <span class="mu-subtitle">Hakkımızda</span>
+                                <h2>@Hakkimizda.Baslik</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mu-about-us-left">
+                                        <img src="~/Content/Mavi/img/hakkimizda/@Hakkimizda.Resim.ResimAd" alt="img">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mu-about-us-right">
+                                        <p>@Hakkimizda.Paragraf1</p>
+                                        <br />
+                                        <p>@Hakkimizda.Paragraf2 </p>
+                                        <br />
+                                        <p>@Hakkimizda.Paragraf3 </p>
+                                        <br />
+                                        <a class="mu-readmore-btn mu-chef-btn" href="/Hakkimizda/Hakkimizda">Devamı İçin..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-chef">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-chef-area">
+
+                    <br />
+                    <div class="mu-title">
+
+                        <br />
+                        <span class="mu-subtitle">Çok Satanlar</span>
+                    </div>
+
+                    <div class="mu-chef-content">
+
+                        <ul class="mu-chef-nav">
+
+                            @foreach (var CokSatanlar in Model.Item2)
+                            {
+                                <li>
+                                    <div class="mu-single-chef">
+                                        <figure class="mu-ssingle-chef-img">
+                                            <img class="media-object" src="~/Content/Mavi/img/menu/@CokSatanlar.Urunler.Resim.ResimAd" alt="img">
+                                        </figure>
+
+                                        <div class="mu-single-chef-info">
+                                            <span>@CokSatanlar.Urunler.UrunAd</span>
+                                            <h4>@CokSatanlar.Urunler.Fiyat ₺</h4>
+                                        </div>
+                                        <div class="mu-single-chef-social">
+                                            <a name="@CokSatanlar.Urunler.UrunId" class="sepeteAt">Ekle</a>
+                                        </div>
+
+                                    </div>
+                                </li>
+                             }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-counter">
+    <div class="mu-counter-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-counter-area">
+
+                        <ul class="mu-counter-nav">
+
+                            <li class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="mu-single-counter">
+                                    <span class="auto-style2">Cesitli</span>
+                                    <h2><span class="counter-value" data-count="150">6</span><sup>+</sup></h2>
+                                    <p>Kahvaltı seçeneği</p>
+                                </div>
+                            </li>
+
+                            <li class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="mu-single-counter">
+                                    <span>Lezzetli</span>
+                                    <h2><span class="counter-value" data-count="60">6</span><sup>+</sup></h2>
+                                    <p>Yemek seçeneği</p>
+                                </div>
+                            </li>
+
+                            <li class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="mu-single-counter">
+                                    <span>Sıcak</span>
+                                   <h2><span class="counter-value" data-count="45">3</span><sup>+</sup></h2>
+                                    <p>Kahve seçeneği</p>
+                                </div>
+                            </li>
+
+                            <li class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="mu-single-counter">
+                                    <span>Taze</span>
+                                    <h2><span class="counter-value" data-count="70">6</span><sup>+</sup></h2>
+                                    <p>Tatlılar</p>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-client-testimonial">
+    <div class="mu-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-client-testimonial-area">
+                        <div class="mu-title">
+                            <span class="mu-subtitle">Sizden Gelenler</span>
+                        </div>
+                        <!-- testimonial content -->
+
+                            <div class="mu-testimonial-content">
+                                <!-- testimonial slider -->
+
+                                <ul class="mu-testimonial-slider">
+
+                                    @foreach (var Yorum in Model.Item3)
+                                    {
+
+
+                                        <li>
+                                            <div class="mu-testimonial-single">
+
+                                                <div class="mu-testimonial-info">
+                                                    <p>@Yorum.Yorum1</p>
+                                                </div>
+                                                <div class="mu-testimonial-bio">
+                                                    -@Yorum.AdSoyad
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+                                     }
+                                </ul>
+
+
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-reservation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-reservation-area">
+
+                    <div class="mu-title">
+                        <span class="mu-subtitle">Rezervasyon</span>
+                    </div>
+
+                    <div class="mu-reservation-content">
+                        <p>Yerinizi kimseler kapmadan hemen ayırtın siz de bu lezzetlerden mahrum kalmayın...</p>
+
+                        <div class="col-md-6">
+                            <div class="mu-reservation-left">
+                                <form class="mu-reservation-form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="adsoyad" placeholder="Adınız ve  Soyadınız">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="eposta" placeholder="Mail Adresiniz">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="telefon" placeholder="Telefon Numaranız">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <select class="form-control" name="kisisayısı">
+                                                    <option value="0">Kaç Kişisiniz?</option>
+                                                    <option value="1 person">1 Kişi</option>
+                                                    <option value="2 people">2 Kişi</option>
+                                                    <option value="3 people">3 Kişi</option>
+                                                    <option value="4 people">4 Kişi</option>
+                                                    <option value="5 people">5 Kişi</option>
+                                                    <option value="6 people">6 Kişi</option>
+                                                    <option value="7 people">7 Kişi</option>
+                                                    <option value="8 people">8 Kişi</option>
+                                                    <option value="9 people">9 Kişi</option>
+                                                    <option value="10 people">10 Kişi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="datepicker" name="tarih" placeholder="Tarih">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <select class="form-control" name="saat">
+                                                    <option value="0">Saat Seçiniz</option>
+                                                    <option value="time 9">09.00</option>
+                                                    <option value="time 10">10.00</option>
+                                                    <option value="time 11">11.00</option>
+                                                    <option value="time 12">12.00</option>
+                                                    <option value="time 13">13.00</option>
+                                                    <option value="time 14">14.00</option>
+                                                    <option value="time 15">15.00</option>
+                                                    <option value="time 16">16.00</option>
+                                                    <option value="time 17">17.00</option>
+                                                    <option value="time 18">18.00</option>
+                                                    <option value="time 19">19.00</option>
+                                                    <option value="time 20">20.00</option>
+                                                    <option value="time 21">21.00</option>
+                                                    <option value="time 22">22.00</option>
+                                                    <option value="time 23">23.00</option>
+                                                    <option value="time 00">00.00</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" cols="30" rows="10" name="mesaj" placeholder="Mesajınız"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="mu-readmore-btn">Rezervasyon Yap </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="mu-reservation-right">
+                                <div class="mu-opening-hour">
+                                    <h2>Çalışma Saatleri</h2>
+                                    <ul class="list-unstyled">
+
+                                        @foreach (var CalismaPlani in Model.Item4)
+                                        {
+
+
+                                            <li>
+                                                <p>@CalismaPlani.Gün</p>
+                                                <p>@CalismaPlani.Saat</p>
+                                            </li>
+                                         }
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MAVİRESTAURANT.Models.Entity.Galeri> 
+@{
+    ViewBag.Title = "Galeri";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+
+<section id="mu-gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-gallery-area">
+                    <br />
+                    <div class="mu-title">
+                        <br />
+                        <span class="mu-subtitle">Galeri</span>
+
+                    </div>
+
+                    <div class="mu-gallery-content">
+
+                        <!-- Start gallery image -->
+                        <div class="mu-gallery-body">
+                            @foreach (var resim in Model)
+                            {
+                                <!-- start single gallery image -->
+                                <div class="mu-single-gallery col-md-4">
+                                    <div class="mu-single-gallery-item">
+                                        <figure class="mu-single-gallery-img">
+                                            <a class="mu-imglink" href="~/Content/Mavi/img/gallery/@resim.Resim.ResimAd">
+                                                <img alt="img" src="~/Content/Mavi/img/gallery/@resim.Resim.ResimAd">
+                                                <div class="mu-single-gallery-info">
+                                                    <img class="mu-view-btn" src="~/Content/Mavi/img/plus.png" alt="plus icon img">
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <!-- End single gallery image -->
+                            }
+
+                            
+                        </div>
+                                        
+
+                    </div>
+                </div>
+            </div>
+       </div>
+  </div>
+                
+
+
+</section>
+

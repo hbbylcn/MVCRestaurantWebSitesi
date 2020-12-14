@@ -1,0 +1,91 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Urunler
+@{
+    ViewBag.Title = "Ürün Ekle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Ürün Ekleme Formu</h4> <br />
+
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    @using (Html.BeginForm("UrunEkle", "UrunAdmin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                    {
+
+
+                        <table class="table table-bordered" width="100" cellspacing="0">
+
+                            <tr>
+                                <td>Resim</td>
+                                <td>
+                                    @Html.TextBox("dosya", "", new { type = "file" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Ürün Kodu:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.UrunKod, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UrunKod)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ürün Adı:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.UrunAd, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UrunAd)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Kategori</td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.Kategori1.Kategori_Id, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Açıklama:</td>
+                                <td>
+                                    @Html.TextAreaFor(m => m.Aciklama, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Aciklama)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Fiyat:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Fiyat, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Stok:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Stok, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Aktiflik Durumu:</td>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.Durum, true)@Html.Label("Aktif")
+                                    @Html.RadioButtonFor(m => m.Durum, false)@Html.Label("Aktif Değil")
+                                </td>
+                            </tr>
+
+                        </table>
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

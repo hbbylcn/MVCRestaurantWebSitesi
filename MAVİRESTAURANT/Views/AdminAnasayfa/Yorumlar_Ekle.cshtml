@@ -1,0 +1,52 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Yorum
+@{
+    ViewBag.Title = "Yorumlar Ekle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Yorum Ekleme Formu</h4> <br />
+
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    @using (Html.BeginForm("Yorumlar_Ekle", "AdminAnasayfa", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                    {
+
+
+                        <table class="table table-bordered" width="100" cellspacing="0">
+
+                            <tr>
+                                <td>Yorum:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Yorum1, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Yorum1)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ad Soyad:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.AdSoyad, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.AdSoyad)
+                                </td>
+                            </tr>
+                           
+
+                        </table>
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

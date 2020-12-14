@@ -1,0 +1,43 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Galeri
+
+@{
+    ViewBag.Title = "GaleriResim_Guncelle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Galeri Resim Güncelleme</h4> <br />
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <table class="table table-bordered" width="100" cellspacing="0">
+                        <tr>
+                            <td>Resim:</td>
+                            <td>
+                                @Html.DropDownListFor(m => m.Resim.Resim_Id, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                            </table>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn-success" />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

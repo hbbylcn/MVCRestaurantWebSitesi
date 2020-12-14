@@ -1,0 +1,88 @@
+﻿
+@model IEnumerable<MAVİRESTAURANT.Models.Entity.Rezervasyon>
+@{
+    ViewBag.Title = "Müşteri İletişim";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+
+            <h4><i class="fas fa-table"></i>Rezervasyon Talep Listesi</h4> <br />
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Rezerve Id</th>
+                            <th>Müşteri Adı-Soyadı</th>
+                            <th>Mail Adresi</th>
+                            <th>Müşteri Telefon</th>
+                            <th>Kişi Sayısı</th>
+                            <th>Tarih</th>
+                            <th>Saat</th>
+                            <th>Mesaj</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var rezerve in Model)
+                        {
+                            <tr>
+                                <td>@rezerve.Rezno</td>
+                                <td>@rezerve.AdSoyad</td>
+                                <td>@rezerve.Mail</td>
+                                <td>@rezerve.Telefon</td>
+                                <td>@rezerve.KisiSayisi</td>
+                                <td>@rezerve.Tarih</td>
+                                <td>@rezerve.Saat</td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_@rezerve.Rezno">
+                                        İçeriği Oku
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter_@rezerve.Rezno" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">İçerik</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @Html.Raw(rezerve.Mesaj)
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+               
+        
+                   
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

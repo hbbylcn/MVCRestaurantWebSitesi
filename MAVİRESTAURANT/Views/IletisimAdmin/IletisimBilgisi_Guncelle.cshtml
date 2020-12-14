@@ -1,0 +1,63 @@
+﻿@model MAVİRESTAURANT.Models.Entity.IletisimBilgileri
+@{
+    ViewBag.Title = "IletisimBilgisi_Guncelle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>İletişim Bilgileri Güncelleme</h4> <br />
+
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <table class="table table-bordered" width="100" cellspacing="0">
+
+                            <tr>
+                                <td>E-Posta:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Eposta, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Eposta)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Adres:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Adres, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Adres)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Telefon:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Tel, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Tel)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Harita Yolu:</td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.HaritaYolu, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.HaritaYolu)
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

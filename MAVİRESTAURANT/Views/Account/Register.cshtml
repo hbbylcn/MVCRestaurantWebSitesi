@@ -1,0 +1,110 @@
+﻿@model MAVİRESTAURANT.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kullanıcı Kaydı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+    <link href="~/logincss/font-awesome.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <img class="wave" src="~/img/wave.png" />
+        <div class="container">
+            <div class="img">
+                <img src="~/img/nn.svg" />
+            </div>
+
+
+
+            <div class="login-content">
+                @using (Html.BeginForm("Register", "Account", new { ReturnUrl = Request.QueryString["ReturnUrl"], FormMethod.Post }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <form action="Index.cshtml">
+                        <h1>Mavi Restaurant</h1>
+
+                        <div class="input-div one">
+                            <div class="i">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="div">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "input", autofocus = "autofocus" })
+                                <h5>Adınız</h5>
+                                @Html.ValidationMessageFor(m => m.FirstName)
+                            </div>
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="div">
+                                @Html.TextBoxFor(m => m.SurName, new { @class = "input" ,autofocus = "autofocus" })
+                                <h5>Soyadınız</h5>
+                                @Html.ValidationMessageFor(m => m.SurName)
+
+                            </div>
+
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i">
+                                <i class="fas fa-mail-bulk"></i>
+                            </div>
+                            <div class="div">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "input" })
+                                <h5>Email Adresiniz</h5>
+                                @Html.ValidationMessageFor(m => m.Email)
+
+                            </div>
+
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="div">
+                                @Html.PasswordFor(m => m.Password, new { @class = "input" })
+                                <h5>Şifre</h5>
+                                @Html.ValidationMessageFor(m => m.Password)
+
+                            </div>
+
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="div">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input" })
+                                <h5>Tekrar Şifre</h5>
+                                @Html.ValidationMessageFor(m => m.Password)
+
+                            </div>
+
+                        </div>
+
+                        <input type="submit" class="btn btn-primary btn-block" value="Kayıt Yap">
+
+                    </form>
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="~/logincss/main.js"></script>
+</body>
+</html>
+
+
+
+

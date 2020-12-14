@@ -1,0 +1,69 @@
+﻿@model List<MAVİRESTAURANT.Models.Entity.OdemeKosullari>
+@{
+    ViewBag.Title = "OdemeBilgisi";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+
+<section id="OdemeBilgisi.cshtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+                    <br />
+
+                    @foreach (var OdemeKosullari in Model)
+                    {
+                        if (OdemeKosullari.KosulDurum == true)
+                        {
+                    <div class="mu-title">
+
+                        <br />
+                        <br />
+                        <span class="mu-subtitle">@OdemeKosullari.KosulBaslik1</span>
+                        <br />
+                        <br />
+
+
+
+                    </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mu-about-us-left">
+                                        <img src="~/Content/Mavi/img/@OdemeKosullari.Resim.ResimAd" alt="img">
+                                        @*<img src="~/Content/Mavi/img/original.jpg" alt="img">*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="mu-about-us-right">
+
+                                        <p>@OdemeKosullari.KosulBaslik2</p>
+                                        <br />
+                                        <p>@OdemeKosullari.KosulParagraf1 </p>
+                                        <br />
+                                        <p>@OdemeKosullari.KosulParagraf2 </p>
+                                        <br />
+                                        <p>@OdemeKosullari.KosulParagraf3</p>
+                                        <br />
+                                        <p>@OdemeKosullari.KosulBaslik3</p>
+                                        <br />
+                                        <p>@OdemeKosullari.KosulParagraf4</p>
+                                        <br />
+                                        <p>@OdemeKosullari.KosulParagraf5</p>
+                                        <br />
+                                        <br />
+                                        <br />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

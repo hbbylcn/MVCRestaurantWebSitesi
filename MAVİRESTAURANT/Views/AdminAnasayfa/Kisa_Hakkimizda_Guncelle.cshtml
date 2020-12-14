@@ -1,0 +1,92 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Hakkimizda
+
+@{
+    ViewBag.Title = "Kısa Hakkımızda Güncelle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Kısa Hakkımızda Güncelle</h4> <br />
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <table class="table table-bordered" width="100" cellspacing="0">
+                            @*<div class="form-horizontal">
+                                <h4>Hakkimizda</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Hakkimizda_Id)*@
+                            <tr>
+                                <td>Başlık:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Baslik, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Paragraf1:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Paragraf1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Paragraf1, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Paragraf2:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Paragraf2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Paragraf2, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Paragraf3:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Paragraf3, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Paragraf3, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Durum</td>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.Durum, true)@Html.Label("Aktif")
+                                    @Html.RadioButtonFor(m => m.Durum, false)@Html.Label("Aktif Değil")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Resim:</td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.Resim.Resim_Id, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.HakkimizdaResim, "", new { @class = "text-danger" })
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn-success" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

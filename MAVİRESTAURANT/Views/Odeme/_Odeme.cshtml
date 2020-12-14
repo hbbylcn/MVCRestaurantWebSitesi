@@ -1,0 +1,65 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Sepet
+@section Scripts{
+    <script>
+    $(document).ready(function() {
+        $(document).on('click', '#test', function() {
+
+
+                    alert("Sipariş Onay Sayfası Yapım Aşamasında");
+
+        });
+    });
+    </script>
+}
+<div class="table-content table-responsive">
+    <table>
+        <thead>
+            <tr class="title-top">
+                <th class="product-thumbnail">Resim</th>
+                <th class="product-name">Ürün</th>
+                <th class="product-price">Fiyat</th>
+                <th class="product-quantity">Miktar</th>
+                <th class="product-subtotal">Toplam Fiyat</th>
+                <th class="urunSil">Kaldır</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model.SepetUrunler)
+                {
+
+                    <tr>
+                        <td class="product-thumbnail"><a href="#"><img src="~/Content/Mavi/img/menu/@item.yemek.Resim.ResimAd" alt="product img" /></a></td>
+                        <td class="product-name"><a href="#">@item.yemek.UrunAd</a></td>
+                        <td class="product-price"><span class="amount">@item.yemek.Fiyat</span></td>
+                        <td class="product-quantity"><span class="amount">@item.Adet</span></td>
+                        <td class="product-subtotal">@item.Tutar</td>
+                        <td><a class="urunSil btn" id="test" name="@item.yemek.UrunId">Sil</a></td>
+                    </tr>
+
+                    @*<text> @Model.ToplamTutar.ToString()</text>*@
+                }
+            }
+        </tbody>
+
+    </table>
+    @if (Model != null)
+    {
+        <div class="col-md-12">
+            <div class="mu-about-us-left">
+                <div class="cartbox__total__area">
+
+                    <div class="cart__total__amount">
+                        <span>Toplam Fiyat:</span>
+                        <span>@Model.ToplamTutar.ToString("C2")</span>
+                    </div>
+                </div>
+
+                <a class="sepeteAt" href="@Url.Action("kaydet", "Odeme")">Sipariş Onay</a>
+
+            </div>
+        </div>
+    }
+</div>
+

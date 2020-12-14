@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MAVİRESTAURANT.Models.Entity.Hakkimizda>
+@{
+    ViewBag.Title = "Kısa Hakkımızda";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+
+            <h4><i class="fas fa-table"></i>Kısa Hakkımızda Bölümü</h4> <br />
+           
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <th>Başlık</th>
+                            <th>Resim</th>
+                            <th>Paragraf1</th>
+                            <th>Paragraf2</th>
+                            <th>Paragraf3</th>
+                            <th>Aktif</th>
+                            <th>Güncelle</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var hak in Model)
+                        {
+
+                            <tr>
+                                <td>@hak.Hakkimizda_Id</td>
+                                <td>@hak.Baslik</td>
+                                <td><img src="~/Content/Mavi/img/hakkimizda/@hak.Resim.ResimAd" width="150" /></td>
+                                <td>@hak.Paragraf1</td>
+                                <td>@hak.Paragraf2</td>
+                                <td>@hak.Paragraf3</td>
+                                <td>
+                                    <img src="~/Content/Admin/img/@(hak.Durum == true ? "1.png" : "0.png")" />
+                                    <label class="switch">
+                                        <input type="checkbox" id='@hak.Hakkimizda_Id' class="aktifPasif" @(hak.Durum == true ? "checked" : "") />
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+
+                                <td>@Html.ActionLink("Güncelle", "Kisa_Hakkimizda_Guncelle", new { @hak.Hakkimizda_Id }, new { @class = "btn btn-info mx-4" })</td>
+
+                               
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/Admin/css/switch.css" rel="stylesheet" />
+<script src="~/Content/Admin/js/sweetalert.min.js"></script>

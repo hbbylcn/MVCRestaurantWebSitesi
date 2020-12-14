@@ -1,0 +1,81 @@
+﻿
+@using MAVİRESTAURANT.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h5>@ViewBag.hata</h5>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kullanıcı Girişi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/style.css">
+    <link href="~/logincss/font-awesome.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+
+        <img class="wave" src="~/img/wave.png" />
+        <div class="container">
+            <div class="img">
+                <img src="~/img/nn.svg" />
+            </div>
+            <div class="login-content">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = Request.QueryString["ReturnUrl"], FormMethod.Post }))
+                { 
+                    @Html.AntiForgeryToken()
+                <form action="Index.cshtml">
+                    <h1>Mavi Restaurant</h1>
+                    <br />
+                    <img class="avatar" src="~/img/undraw_profile_pic_ic5t.png" />
+                    <br />
+                    <br />
+                    <h1>Hoşgeldiniz</h1>
+                    <br />
+                    <br />
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="fas fa-mail-bulk"></i>
+                        </div>
+                        <div class="div">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "input", autofocus = "autofocus" })
+                            <h5>Email Adresi</h5>
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                    </div>
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            @Html.PasswordFor(m => m.Password, new { @class = "input" })
+                            <h5>Şifre</h5>
+                            @Html.ValidationMessageFor(m => m.Password)
+
+                        </div>
+
+                    </div>
+
+                    @*<a href="@Url.Action("ForgotPassword", "Account")">Şifrenizi mi unuttunuz?</a>*@
+                    <a href="@Url.Action("Register", "Account")">Kayıt Ol</a>
+
+                    <input type="submit" class="btn btn-primary btn-block" value="Giriş Yap">
+
+                </form>
+                }
+               
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="~/logincss/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@model MAVİRESTAURANT.Models.Entity.CalismaPlani
+
+@{
+    ViewBag.Title = "CalismaSaatleri_Guncelle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Çalışma Saatleri Güncelle</h4> <br />
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                        <table class="table table-bordered" width="100" cellspacing="0">
+                            <tr>
+                                <td>Gün:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Gün, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Gün, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Saat:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Saat, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Saat, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Kaydet" class="btn btn-success" />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

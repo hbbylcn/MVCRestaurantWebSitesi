@@ -1,0 +1,139 @@
+﻿@model List<MAVİRESTAURANT.Models.Entity.CalismaPlani>
+@{
+    ViewBag.Title = "Rezervasyon";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+
+<section id="mu-reservation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-reservation-area">
+                    <br />
+                    <div class="mu-title">
+                        <br />
+                        <span class="mu-subtitle">Rezervasyon</span>
+                    </div>
+
+                    <div class="mu-reservation-content">
+                        <div class="mu-title">
+                            <br />
+                            <span class="mu-subtitle2"> Yerinizi kimseler kapmadan hemen ayırtın siz de bu lezzetlerden mahrum kalmayın...</span>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="mu-reservation-left">
+                                <form class="mu-reservation-form" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="AdSoyad" placeholder="Adınız ve  Soyadınız">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="Mail" placeholder="Mail Adresiniz">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="Telefon" placeholder="Telefon Numaranız">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <select class="form-control" name="KisiSayisi">
+                                                    <option value="0">Kaç Kişisiniz?</option>
+                                                    <option value="1 kisi">1 Kişi</option>
+                                                    <option value="2 kisi">2 Kişi</option>
+                                                    <option value="3 kisi">3 Kişi</option>
+                                                    <option value="4 kisi">4 Kişi</option>
+                                                    <option value="5 kisi">5 Kişi</option>
+                                                    <option value="6 kisi">6 Kişi</option>
+                                                    <option value="7 kisi">7 Kişi</option>
+                                                    <option value="8 kisi">8 Kişi</option>
+                                                    <option value="9 kisi">9 Kişi</option>
+                                                    <option value="10 kisi">10 Kişi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="datepicker" name="Tarih" placeholder="Tarih">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <select class="form-control" name="Saat">
+                                                    <option value="0">Saat Seçiniz</option>
+                                                    <option value="09.00">09.00</option>
+                                                    <option value="10.00">10.00</option>
+                                                    <option value="11.00">11.00</option>
+                                                    <option value="12.00">12.00</option>
+                                                    <option value="13.00">13.00</option>
+                                                    <option value="14.00">14.00</option>
+                                                    <option value="15.00">15.00</option>
+                                                    <option value="16.00">16.00</option>
+                                                    <option value="17.00">17.00</option>
+                                                    <option value="18.00">18.00</option>
+                                                    <option value="19.00">19.00</option>
+                                                    <option value="20.00">20.00</option>
+                                                    <option value="21.00">21.00</option>
+                                                    <option value="22.00">22.00</option>
+                                                    <option value="23.00">23.00</option>
+                                                    <option value="00.00">00.00</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" cols="30" rows="10" name="Mesaj" placeholder="Mesajınız"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="mu-readmore-btn" id="btn1">Rezervasyon Yap </button>
+                                    </div>
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <script type="text/javascript">
+                                            window.onload=function(){
+                                            alert("@ViewBag.Message");
+                                            };
+
+                                        </script>
+                                    }
+
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="mu-reservation-right">
+                                <div class="mu-opening-hour">
+                                    <div class="mu-title">
+                                        <br />
+                                        <span class="mu-subtitle">Çalışma Saatleri</span>
+                                        <hr />
+                                    </div>
+
+                                    <ul class="list-unstyled">
+                                        @foreach (var calisma in Model)
+                                        {
+                                            <li>
+                                                <p>@calisma.Gün</p>
+                                                <p>@calisma.Saat</p>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

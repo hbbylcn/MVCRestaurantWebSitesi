@@ -1,0 +1,62 @@
+﻿@*@model Tuple<List<MAVİRESTAURANT.Models.Entity.Kategori>, List<MAVİRESTAURANT.Models.Entity.Urunler>>*@
+@model List<MAVİRESTAURANT.Models.Entity.Kategori>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+
+<div class="wrapper" id="wrapper">
+
+    <section class="food__menu__grid__area section-padding--lg">
+        <div class="container">
+
+            <div class="mu-title">
+
+                <span class="mu-subtitle">Menü</span>
+            </div>
+
+            <div class="mu-restaurant-menu-content">
+                <ul class="nav nav-tabs mu-restaurant-menu">
+                    @foreach (var kategori in Model)
+                    {
+                        <li><a  data-toggle="tab" data-categoryId="@kategori.Kategori_Id" id="tab-item">@kategori.Kategori_adi</a></li>
+
+                     }
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade in active">
+                        <div class="mu-tab-content-area" id="tabPanel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+</div>
+
+@section Scripts{
+    <script>
+       $(document).ready(function() {
+            $.ajax({
+                 url: '/Menu/GetProducts/1',
+                 type :'GET',
+                 success: function (data) {
+                    $("#tabPanel").html(data);
+                  }
+             }); 
+
+         $(document).on('click', '#tab-item', function(){
+                var categoryId = $(this).attr("data-categoryId");
+                 $.ajax({
+                        url: '/Menu/GetProducts/' + categoryId,
+                        Type :'GET',
+                        success: function (data) {
+                            $("#tabPanel").html(data);
+                        }
+                 });                       
+            });
+        });
+    </script>
+}

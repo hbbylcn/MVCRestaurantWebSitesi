@@ -1,0 +1,125 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<MAVİRESTAURANT.Models.Entity.Urunler>
+@{
+    ViewBag.Title = "Urun";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+
+            <h4><i class="fas fa-table"></i>Ürünler listesi</h4> <br />
+
+            @Html.ActionLink("Yeni Ürün Ekle", "UrunEkle", null, new { @class = "btn btn-primary mx-4" })
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100" cellspacing="0">
+                    <thead>
+                        <tr>
+
+                            <th>Ürün Id</th>
+                            <th>Ürün Kodu</th>
+                            <th>Resim</th>
+                            <th>Ürün Adı</th>
+                            <th>Kategori</th>
+                            <th>Açıklama</th>
+                            <th>Fiyat</th>
+                            <th>Stok</th>
+                            <th>Aktif</th>
+                            <th>Güncelle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.UrunId</td>
+                                <td>@item.UrunKod</td>
+                                <td><img src="~/Content/Mavi/img/menu/@item.Resim.ResimAd" width="150" /></td>
+                                <td>@item.UrunAd</td>
+                                <td>@item.Kategori1.Kategori_adi</td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter_@item.UrunId">
+                                        İçeriği Oku
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter_@item.UrunId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">İçerik</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @Html.Raw(item.Aciklama)
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@item.Fiyat</td>
+                                <td>@item.Stok</td>
+                                <td>
+                                    <img src="~/Content/Admin/img/@(item.Durum == true ? "1.png" : "0.png")" />
+                                    <label class="switch">
+                                        <input type="checkbox" id='@item.UrunId' class="aktifPasif" @(item.Durum == true ? "checked" : "") />
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td>@Html.ActionLink("Güncelle", "UrunGuncelle", new { item.UrunId }, new { @class = "btn btn-info mx-4" })</td>
+
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Sil_@item.UrunId">
+                                        Sil
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="Sil_@item.UrunId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Ürün Sil</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Ürünü silmek istiyor musunuz?</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary mx-4" data-dismiss="modal">Vazgeç</button>
+                                                    @Html.ActionLink("Sil", "UrunSil", new { item.UrunId }, new { @class = "btn btn-danger mx-4" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Urun", new { page }))
+
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/Content/Admin/css/switch.css" rel="stylesheet" />
+<script src="~/Content/Admin/js/sweetalert.min.js"></script>
+

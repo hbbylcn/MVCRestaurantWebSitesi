@@ -1,0 +1,288 @@
+﻿
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" initial-scale=1 />
+    <title>MAVİ~@ViewBag.Title</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/Mavi/img/logo (2).png" type="image/x-icon">
+
+    <!-- Font awesome -->
+
+
+    <link href="~/Content/Mavi/font-awesome.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+
+    <link href="~/Content/Mavi/bootstrap.css" rel="stylesheet" />
+    <!-- Slick slider -->
+    <link href="~/Content/Mavi/slick.css" rel="stylesheet" />
+
+    <!-- Date Picker -->
+    <link href="~/Content/Mavi/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <!-- Gallery Lightbox -->
+    <link href="~/Content/Mavi/magnific-popup.css" rel="stylesheet" />
+
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/Mavi/default-theme.css" rel="stylesheet" />
+
+    <!-- Main style sheet -->
+    <link href="~/Content/Mavi/style/style.css" rel="stylesheet" />
+    <link href="~/Content/Mavi/style/style2.css" rel="stylesheet" />
+    <link href="~/Content/Mavi/style/style3.css" rel="stylesheet" />
+    <link href="~/Content/Mavi/css/bootstrap.min.css" rel="stylesheet" />
+    
+    
+
+    <link href="~/Content/Mavi/css/custom.css" rel="stylesheet" />
+    <link href="~/Content/Mavi/css/plugins.css" rel="stylesheet" />
+
+
+    <!-- Google Fonts -->
+    <!-- Prata for body  -->
+    
+    <link href='https://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css' />
+    <!-- Tangerine for small title -->
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css' />
+    <!-- Open Sans for title -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+
+    <style type="text/css">
+        .auto-style1 {
+            left: 0px;
+            top: 0px;
+        }
+
+        .auto-style2 {
+            font-family: Tangerine, cursive;
+            font-size: 40px;
+        }
+    </style>
+
+
+</head>
+@RenderBody()
+<body>
+    <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="Anasayfa.cshtml">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    <header id="mu-header">
+        <nav class="navbar navbar-default mu-main-navbar" role="navigation">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Movies" asp-action="ANASAYFA"></a>
+                <div class="navbar-header">
+                    <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar" style="height: 2px"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- LOGO -->
+                    <!--  Text based logo  -->
+                    <a class="navbar-brand"> Mavi<span> <img src="~/Content/Mavi/img/slider/plate.png" alt="img"></span></a>
+
+
+                    <!--  Image based logo  -->
+                    <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="Logo img"></a>  -->
+
+
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
+                        <li>@Html.ActionLink("Anasayfa", "Anasayfa", "Anasayfa")</li>
+                        <li>@Html.ActionLink("Hakkımızda", "Hakkimizda", "Hakkimizda")</li>
+                        <li>@Html.ActionLink("Rezervasyon", "Rezervasyon", "Rezervasyon")</li>
+                        <li>@Html.ActionLink("Menü", "Menu", "Menu")</li>
+                        <li>@Html.ActionLink("Galeri", "Galeri", "Galeri")</li>
+                        <li>@Html.ActionLink("İletişim", "Iletisim", "Iletisim")</li>
+                        @*<li><a class="cart-all" href="Iletisim/Iletisim.cshtml"><img src="~/Content/Mavi/img/877012-32.png" /></a></li>*@
+
+                        @{
+                            Html.RenderAction("MiniSepetWidget", "Anasayfa");
+                        }
+                        @*<li><a class="navbar-brand" href="index.html"><img src="~/Content/Mavi/img/login.png" alt="Logo img"></a></li>*@
+                        <li class="nav-item dropdown no-arrow">
+
+                            @*<span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.Name</span>*@
+                            <a class="nav-link dropdown-toggle" href="@Url.Action("Login", "Account")" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="img-profile rounded-circle" src="~/Content/Mavi/img/login.png" alt="Logo img">
+                            </a>
+                            
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown" >
+
+                                @Html.Partial("_LoginPartial")
+
+                            </div>
+
+
+                        </li>
+
+                            <script type="text/javascript" src="http://www.ibrahimay.net/wp-content/scripts/google-web-translate.v1/direk.js"></script>
+                    </ul>
+                        @*<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Çıkmak istediğinize emin misiniz?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Çıkış yapmak için Çıkış seçeneğine tıklayın</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">İptal</button>
+                                        <a class="btn btn-primary" href="@Url.Action("Anasayfa", "Anasayfa")">Çıkış</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div><!--/.nav-collapse -->
+
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- End header section -->
+    <!-- Start Footer -->
+
+    <footer id="mu-footer">
+
+        <div class="container">
+
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 about-footer">
+                        <div class="footer-title">
+                            <h4><span>MAVİ Restaurant</span></h4>
+                        </div>
+
+
+                        <a class="btn red-btn" href="/ILETISIM/ILETISIM">ILETISIM</a>
+                    </div>
+                    <div class="col-md-6 col-lg-2 page-more-info">
+                        <div class="footer-title">
+                            <h4><span>Sayfalar</span></h4>
+                        </div>
+                        <ul>
+                            <li>@Html.ActionLink("Anasayfa", "Anasayfa", "Anasayfa")</li>
+                            <li>@Html.ActionLink("Hakkımızda", "Hakkimizda", "Hakkimizda")</li>
+                            <li>@Html.ActionLink("Rezervasyon", "Rezervasyon", "Rezervasyon")</li>
+                            <li>@Html.ActionLink("Menü", "Menu", "Menu")</li>
+                            <li>@Html.ActionLink("Galeri", "Galeri", "Galeri")</li>
+                            <li>@Html.ActionLink("İletişim", "Iletisim", "Iletisim")</li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 page-more-info">
+                        <div class="footer-title">
+                            <h4><span>Burası Mavi</span> </h4>
+                        </div>
+                        <ul>
+
+                            <li><a href="/Home/Anasayfa/Anasayfa/#mu-chef">Çok Satanlar</a></li>
+                           
+                           <li><a href="@Url.Action("OdemeBilgisi", "Home")">Odeme Bilgisi</a></li>
+                           <li> <a href="@Url.Action("TeslimatKosullari", "Home")">Teslimat Kosullari</a></li>
+                        </ul>
+                    </div> 
+                    <div class="col-md-6 col-lg-4 open-hours">
+
+
+
+                        <div class="footer-logo">
+                            <div class="footer-title">
+                                <h4><span>Bir Adım Uzağınızdayız</span></h4>
+                            </div>
+                            <table>
+                                <tr>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d96287.7657098164!2d29.006858900013512!3d41.04728919850789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m5!1s0x14cac9b1149d7ac1%3A0x672eb8d2aeee9c6e!2zQmFow6dlbGlldmxlciBNYWgsIERvxJ91xZ8gw5xuaXZlcnNpdGVzaSDDh2VuZ2Vsa8O2eSBZZXJsZcWfa2VzaSwgQm9zbmEgQnVsdmFyxLEsIMOcc2vDvGRhci_EsHN0YW5idWw!3m2!1d41.0473104!2d29.0768992!4m0!5e0!3m2!1str!2str!4v1581792577438!5m2!1str!2str" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+                                </tr>
+                                <tr>
+                                    <div class="mu-footer-area">
+                                        <div class="mu-footer-social">
+                                            <a href="https://www.facebook.com/Restaurantmavii-103820671363867"><span class="fa fa-facebook"></span></a>
+                                            <a href="https://twitter.com/restaurantmavii"><span class="fa fa-twitter"></span></a>
+                                            <a href="https://www.instagram.com/restaurantmavii/"><span class="fa fa-instagram"></span></a>
+                                        </div>
+
+
+                                    </div>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <hr>
+                <center>
+                    <div class="mu-footer-copyright">
+                        <p>&copy; MAVİ <a rel="nofollow" href="http://markups.io"></a>Lezzet Dünyasının Tek Adresi.</p>
+                        <script type="text/javascript" src="http://www.ibrahimay.net/wp-content/scripts/google-web-translate.v1/direk.js"></script>
+
+                    </div>
+                </center>
+            </div>
+        </div>
+
+    </footer>
+    @*<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Çıkmak istediğinize emin misiniz?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Çıkış yapmak için Çıkış seçeneğine tıklayın</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">İptal</button>
+                    <a class="btn btn-primary" href="@Url.Action("Anasayfa", "Anasayfa")">Çıkış</a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!-- jQuery library -->
+
+    <script type="text/jscript" src="~/Content/Mavi/scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/bootstrap.js"></script>
+    <!-- Slick slider -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/slick.js"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/._simple-animated-counter.js"></script>
+    <!-- Gallery Lightbox -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/jquery.magnific-popup.min.js"></script>
+    <!-- Date Picker -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/bootstrap-datepicker.js"></script>
+    <!-- Ajax contact form  -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/app.js"></script>
+
+    <!-- Custom js -->
+    <script type="text/javascript" src="~/Content/Mavi/scripts/custom.js"></script>
+
+
+    <script src="~/Content/Mavi/js/bootstrap.min.js"></script>
+    <script src="~/Content/Mavi/js/active.js"></script>
+    <script src="~/Content/Mavi/js/plugins.js"></script>
+    <script src="~/Content/Mavi/js/popper.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

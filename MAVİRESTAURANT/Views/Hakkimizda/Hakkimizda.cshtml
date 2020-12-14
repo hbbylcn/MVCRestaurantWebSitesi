@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MAVİRESTAURANT.Models.Entity.Hakkimizda>
+
+@{
+    ViewBag.Title = "Hakkımızda";
+    Layout = "~/Views/Shared/_LayoutMavi.cshtml";
+}
+
+<section id="HAKKIMIZDA.cshtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+                    <br />
+                    
+                    @foreach (var Hakkimizda in Model)
+                    {
+                        if (Hakkimizda.Durum == true) { 
+                    <div class="mu-title">
+                        <br />
+                        <br />
+                        <br />
+                        <span class="mu-subtitle">Hakkımızda</span>
+                        <br />
+                        <br />
+
+
+                        <h2>@Hakkimizda.Baslik</h2>
+
+                    </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mu-about-us-left">
+                                    <img src="~/Content/Mavi/img/hakkimizda/@Hakkimizda.Resim.ResimAd" alt="img">
+                                 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                 
+                                <div class="mu-about-us-right">
+
+                                    <p>@Hakkimizda.Paragraf1</p>
+                                    <br />
+                                    <p>@Hakkimizda.Paragraf2 </p>
+                                    <br />
+                                    <p>@Hakkimizda.Paragraf3 </p>
+                                    <br />
+                                    <p>@Hakkimizda.Paragraf4</p>
+                                    <br />
+                                    <p>@Hakkimizda.Paragraf5</p>
+                                    <br />
+                                    <p>@Hakkimizda.Paragraf6</p>
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

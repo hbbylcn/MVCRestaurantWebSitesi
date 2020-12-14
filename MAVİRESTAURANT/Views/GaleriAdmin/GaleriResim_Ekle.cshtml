@@ -1,0 +1,45 @@
+﻿@model MAVİRESTAURANT.Models.Entity.Galeri
+@{
+    ViewBag.Title = "GaleriResim_Ekle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+
+                <h4><i class="fas fa-table"></i>Ürün Ekleme Formu</h4> <br />
+
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    @using (Html.BeginForm("GaleriResim_Ekle", "GaleriAdmin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                    {
+
+
+                        <table class="table table-bordered" width="100" cellspacing="0">
+
+                            <tr>
+                                <td>Resim</td>
+                                <td>
+                                    @Html.TextBox("dosya", "", new { type = "file" })
+                                </td>
+                            </tr>
+
+                        </table>
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
